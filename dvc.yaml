@@ -1,0 +1,7 @@
+stages:
+  data_preprocessing:
+    cmd: python3 scripts/data_scripts/data_preprocessing.py datasets/raw/housing_price_dataset.csv
+    deps:
+    - datasets/raw/housing_price_dataset.csv
+    outs:
+    - datasets/baselines
