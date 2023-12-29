@@ -58,13 +58,13 @@
 
 Данные взяты с [kaggle - House Price Prediction Data](https://www.kaggle.com/datasets/muhammadbinimran/housing-price-prediction-data/code).
 
-Для подготовки данных к МО был написан скрипт scripts/data_scripts/data_preprocessing.py. Дополнительно, в директории с данным скриптом находится Jupyter Nootebook версия.
+Для подготовки данных к МО был написан скрипт ```scripts/data_scripts/data_preprocessing.py```. Дополнительно, в директории с данным скриптом находится Jupyter Nootebook версия.
 
 ### Этапы и конвейер
 
 Описаны следующие этапы:
-1. Подготовка данных - data_preprocessing
-2. Создание модели и ее обучение - dt
-3. Финальное тестирование модели - evaluate
+1. Подготовка данных - **data_preprocessing**;
+2. Создание модели и ее обучение - **dt**;
+3. Финальное тестирование модели - **evaluate**.
 
 Скриншоты отработки этапов представлены ниже.
