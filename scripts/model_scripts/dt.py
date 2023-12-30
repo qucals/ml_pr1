@@ -5,7 +5,6 @@ import yaml
 
 import pandas as pd
 
-from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeRegressor
 
 if len(sys.argv) != 3:
