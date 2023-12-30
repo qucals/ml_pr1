@@ -9,47 +9,52 @@ stages:
       size: 1944010
     - path: scripts/data_scripts/data_preprocessing.py
       hash: md5
-      md5: 75a20478075c25d31fb5af6fb3d5a6af
-      size: 1191
+      md5: cfc1115000db8f8e06e0bff759d9c697
+      size: 1184
     outs:
     - path: data/baselines
       hash: md5
-      md5: 6b132d8b1a4801ef850b1c30c42a3640.dir
-      size: 1659670
+      md5: 5d3a47110379675e800d81b7cb3c687f.dir
+      size: 2009562
       nfiles: 2
   dt:
     cmd: python3 scripts/model_scripts/dt.py data/baselines/train.csv model.pkl
     deps:
     - path: data/baselines/train.csv
       hash: md5
-      md5: 2b197ffb58398098012dba44a9388a29
-      size: 1161847
+      md5: ec42644f89fedd9389b6ec97e17d67ca
+      size: 1406758
     - path: scripts/model_scripts/dt.py
       hash: md5
-      md5: 78ecfb7b02a0aa807f50fafdc1119857
-      size: 906
+      md5: faf670a0cc3509a86cde048be731d9ed
+      size: 877
+    params:
+      params.yaml:
+        train.algorithm: auto
+        train.leaf_size: 30
+        train.neighbors: 10
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: aaa54ff2ada6e363c15c3e1bf1c60525
-      size: 5571
+      md5: ac247c276c9baa689d264f4a09a59038
+      size: 2996538
   evaluate:
     cmd: python3 scripts/model_scripts/evaluate.py data/baselines/test.csv models/model.pkl
     deps:
     - path: data/baselines/test.csv
       hash: md5
-      md5: 28a2636c4809e81eebeb00ec2f1e3651
-      size: 497823
+      md5: c3ed730f88ce53e1dee9682bd3e1a282
+      size: 602804
     - path: models/model.pkl
       hash: md5
-      md5: aaa54ff2ada6e363c15c3e1bf1c60525
-      size: 5571
+      md5: ac247c276c9baa689d264f4a09a59038
+      size: 2996538
     - path: scripts/model_scripts/evaluate.py
       hash: md5
-      md5: a0550406e88e97c1992b7cdb2de83061
-      size: 585
+      md5: 2a40f435970cbbacb9cab42224f1f471
+      size: 666
     outs:
     - path: evaluate/score.json
       hash: md5
-      md5: 49c704b0605a3be281499b512c4fd37c
-      size: 30
+      md5: 1bef34ff0be3e61a37f9752a35f99a33
+      size: 31

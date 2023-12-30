@@ -8,6 +8,10 @@ stages:
     - data/baselines
   dt:
     cmd: python3 scripts/model_scripts/dt.py data/baselines/train.csv model.pkl
+    params:
+      - train.neighbors
+      - train.algorithm
+      - train.leaf_size
     deps:
     - scripts/model_scripts/dt.py
     - data/baselines/train.csv

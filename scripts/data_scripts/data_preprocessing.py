@@ -17,7 +17,7 @@ f_train_output = os.path.join("data", "baselines", "train.csv")
 f_test_output = os.path.join("data", "baselines", "test.csv")
 os.makedirs(os.path.join("data", "baselines"), exist_ok=True)
 
-params = yaml.safe_load(open("settings/params.yaml"))["split"]
+params = yaml.safe_load(open("params.yaml"))["split"]
 split_ratio = params["split_ratio"]
 
 # df = pd.read_csv("../../data/raw/housing_price_dataset.csv")
@@ -29,8 +29,8 @@ df.head()
 
 df.drop(df[df.Price <= 0].index, axis = 0, inplace = True)
 
-ds = df.drop(columns = ["Neighborhood", "YearBuilt"], axis = 1)
-ds_train, ds_test = train_test_split(ds, test_size=split_ratio, random_state=42)
+# ds = df.drop(columns = ["Neighborhood", "YearBuilt"], axis = 1)
+ds_train, ds_test = train_test_split(df, test_size=split_ratio, random_state=42)
 
 # ds_train.to_csv("../../data/baselines/train.csv")
 # ds_test.to_csv("../../data/baselines/test.csv")

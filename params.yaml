@@ -1,0 +1,6 @@
+split:
+  split_ratio: 0.3
+train:
+  neighbors: 10
+  algorithm: "auto"
+  leaf_size: 30

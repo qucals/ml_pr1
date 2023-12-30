@@ -6,7 +6,7 @@ import yaml
 import pandas as pd
 
 from sklearn.preprocessing import StandardScaler
-from sklearn.tree import DecisionTreeRegressor
+from sklearn.neighbors import KNeighborsRegressor
 
 if len(sys.argv) != 3:
     sys.stderr.write("Arguments error. Usage:\n")
@@ -17,18 +17,16 @@ f_input = sys.argv[1]
 f_output = os.path.join("models", sys.argv[2])
 os.makedirs(os.path.join("models"), exist_ok=True)
 
-params = yaml.safe_load(open("settings/params.yaml"))["train"]
-random_state = params["random_state"]
-max_depth = params["max_depth"]
+params = yaml.safe_load(open("params.yaml"))["train"]
+neighbors = params["neighbors"]
+algorithm = params["algorithm"]
+leaf_size = params["leaf_size"]
 
 df = pd.read_csv(f_input, header=0)
-X_train = df.iloc[0:, [1, 2, 3]]
-y_train = df.iloc[0:, 4]
+X_train = df.iloc[0:, [1, 2, 3, 4]]
+y_train = df.iloc[0:, 5]
 
-scaler = StandardScaler()
-X_train = scaler.fit_transform(X_train)
-
-model = DecisionTreeRegressor(max_depth=max_depth, random_state=random_state)
+model = KNeighborsRegressor(n_neighbors=neighbors, algorithm=algorithm, leaf_size=leaf_size)
 model.fit(X_train, y_train)
 
 with open(f_output, "wb") as fd:
