@@ -30,12 +30,12 @@ stages:
       size: 719
     params:
       params.yaml:
-        train.max_depth: 6
+        train.max_depth: 7
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: 47532f74aeb1be34ac39919e1a5edf87
-      size: 10314
+      md5: 58130328599805393da65eda6bc6aa88
+      size: 19530
   evaluate:
     cmd: python3 scripts/model_scripts/evaluate.py data/baselines/test.csv models/model.pkl
     deps:
@@ -45,8 +45,8 @@ stages:
       size: 527824
     - path: models/model.pkl
       hash: md5
-      md5: 47532f74aeb1be34ac39919e1a5edf87
-      size: 10314
+      md5: 58130328599805393da65eda6bc6aa88
+      size: 19530
     - path: scripts/model_scripts/evaluate.py
       hash: md5
       md5: 677764f9235473daafd08c7e6392e42f
@@ -54,5 +54,5 @@ stages:
     outs:
     - path: evaluate/score.json
       hash: md5
-      md5: b4476c2a6041e71142784c3cb95a9fe6
+      md5: 81faf5f59f4c67a10251d7450e45447c
       size: 29
