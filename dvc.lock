@@ -1,0 +1,55 @@
+schema: '2.0'
+stages:
+  data_preprocessing:
+    cmd: python3 scripts/data_scripts/data_preprocessing.py data/raw/housing_price_dataset.csv
+    deps:
+    - path: data/raw/housing_price_dataset.csv
+      hash: md5
+      md5: b8a6965dc68aa71d3d262891ac94eb9e
+      size: 1944010
+    - path: scripts/data_scripts/data_preprocessing.py
+      hash: md5
+      md5: 75a20478075c25d31fb5af6fb3d5a6af
+      size: 1191
+    outs:
+    - path: data/baselines
+      hash: md5
+      md5: 6b132d8b1a4801ef850b1c30c42a3640.dir
+      size: 1659670
+      nfiles: 2
+  dt:
+    cmd: python3 scripts/model_scripts/dt.py data/baselines/train.csv model.pkl
+    deps:
+    - path: data/baselines/train.csv
+      hash: md5
+      md5: 2b197ffb58398098012dba44a9388a29
+      size: 1161847
+    - path: scripts/model_scripts/dt.py
+      hash: md5
+      md5: 78ecfb7b02a0aa807f50fafdc1119857
+      size: 906
+    outs:
+    - path: models/model.pkl
+      hash: md5
+      md5: aaa54ff2ada6e363c15c3e1bf1c60525
+      size: 5571
+  evaluate:
+    cmd: python3 scripts/model_scripts/evaluate.py data/baselines/test.csv models/model.pkl
+    deps:
+    - path: data/baselines/test.csv
+      hash: md5
+      md5: 28a2636c4809e81eebeb00ec2f1e3651
+      size: 497823
+    - path: models/model.pkl
+      hash: md5
+      md5: aaa54ff2ada6e363c15c3e1bf1c60525
+      size: 5571
+    - path: scripts/model_scripts/evaluate.py
+      hash: md5
+      md5: a0550406e88e97c1992b7cdb2de83061
+      size: 585
+    outs:
+    - path: evaluate/score.json
+      hash: md5
+      md5: 49c704b0605a3be281499b512c4fd37c
+      size: 30

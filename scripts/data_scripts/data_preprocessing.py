@@ -13,8 +13,9 @@ if len(sys.argv) != 2:
     sys.exit(-1)
 
 f_input = sys.argv[1]
-f_train_output = os.path.join("datasets", "baselines", "train.csv")
-f_test_output = os.path.join("datasets", "baselines", "test.txt")
+f_train_output = os.path.join("data", "baselines", "train.csv")
+f_test_output = os.path.join("data", "baselines", "test.csv")
+os.makedirs(os.path.join("data", "baselines"), exist_ok=True)
 
 params = yaml.safe_load(open("settings/params.yaml"))["split"]
 split_ratio = params["split_ratio"]

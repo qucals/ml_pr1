@@ -1,24 +1,24 @@
 stages:
   data_preprocessing:
-    cmd: python3 scripts/data_scripts/data_preprocessing.py datasets/raw/housing_price_dataset.csv
+    cmd: python3 scripts/data_scripts/data_preprocessing.py data/raw/housing_price_dataset.csv
     deps:
     - scripts/data_scripts/data_preprocessing.py
-    - datasets/raw/housing_price_dataset.csv
+    - data/raw/housing_price_dataset.csv
     outs:
-    - datasets/baselines
+    - data/baselines
   dt:
-    cmd: python3 scripts/model_scripts/dt.py datasets/baselines/train.csv model.pkl
+    cmd: python3 scripts/model_scripts/dt.py data/baselines/train.csv model.pkl
     deps:
     - scripts/model_scripts/dt.py
-    - datasets/baselines/train.csv
+    - data/baselines/train.csv
     outs:
     - models/model.pkl
   evaluate:
-    cmd: python3 scripts/model_scripts/evaluate.py datasets/baselines/test.csv models/model.pkl
+    cmd: python3 scripts/model_scripts/evaluate.py data/baselines/test.csv models/model.pkl
     deps:
     - scripts/model_scripts/evaluate.py
-    - datasets/baselines/test.csv
+    - data/baselines/test.csv
     - models/model.pkl
     metrics:
     - evaluate/score.json:
-      cache: false
+        cache: false
