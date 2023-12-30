@@ -1,6 +1,4 @@
 split:
   split_ratio: 0.3
 train:
-  neighbors: 15
-  algorithm: "auto"
-  leaf_size: 30
+  max_depth: 6

@@ -12,9 +12,9 @@ if len(sys.argv) != 3:
     sys.stderr.write("\tpython3 evaluate.py data-file.csv model\n")
     sys.exit(-1)
     
-df = pd.read_csv(sys.argv[1], header=None)
-X = df.iloc[1:, [1, 2, 3, 4]]
-y = df.iloc[1:, 5]
+df = pd.read_csv(sys.argv[1], header=0)
+X = df.iloc[0:, [1, 2, 3, 4]]
+y = df.iloc[0:, 5]
 
 with open(sys.argv[2], "rb") as fd:
     model = pickle.load(fd)

@@ -29,7 +29,7 @@ df.head()
 
 df.drop(df[df.Price <= 0].index, axis = 0, inplace = True)
 
-# ds = df.drop(columns = ["Neighborhood", "YearBuilt"], axis = 1)
+ds = df.drop(columns = ["YearBuilt"], axis = 1)
 ds_train, ds_test = train_test_split(df, test_size=split_ratio, random_state=42)
 
 # ds_train.to_csv("../../data/baselines/train.csv")
