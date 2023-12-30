@@ -32,11 +32,11 @@ stages:
       params.yaml:
         train.algorithm: auto
         train.leaf_size: 30
-        train.neighbors: 10
+        train.neighbors: 15
     outs:
     - path: models/model.pkl
       hash: md5
-      md5: ac247c276c9baa689d264f4a09a59038
+      md5: 1951bcaac0b6e858d12d4e0ed261123c
       size: 2996538
   evaluate:
     cmd: python3 scripts/model_scripts/evaluate.py data/baselines/test.csv models/model.pkl
@@ -47,7 +47,7 @@ stages:
       size: 602804
     - path: models/model.pkl
       hash: md5
-      md5: ac247c276c9baa689d264f4a09a59038
+      md5: 1951bcaac0b6e858d12d4e0ed261123c
       size: 2996538
     - path: scripts/model_scripts/evaluate.py
       hash: md5
@@ -56,5 +56,5 @@ stages:
     outs:
     - path: evaluate/score.json
       hash: md5
-      md5: 1bef34ff0be3e61a37f9752a35f99a33
-      size: 31
+      md5: 192d9fc58cedc08f9bcdc105ad5d378c
+      size: 29
